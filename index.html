@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trafix Traffic Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        /* Ensure the map takes up the full screen */
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Trafix Traffic Map</h1>
+
+    <!-- Create a div that will hold the map -->
+    <div id="map"></div>
+
+    <!-- Include Leaflet JS library -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-traffic/0.3.0/leaflet-traffic.min.js"></script>
+    <script>
+        // Initialize the map and set the initial view to Metro Manila (with zoom level)
+        var map = L.map('map').setView([14.5995, 120.9842], 12); // Coordinates for Metro Manila
+
+        // Add OpenStreetMap tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Add traffic speed indicators (use a plugin or custom data here)
+        L.trafficLayer().addTo(map);  // (Assuming you have a working traffic plugin)
+
+    </script>
+</body>
+</html>
